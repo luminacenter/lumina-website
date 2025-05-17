@@ -114,8 +114,6 @@
     .faq-section ul li {
       margin-bottom: 15px;
     }
-
-    /* Chatbot Styles */
     #luminarchChatBtn {
       position: fixed;
       bottom: 25px;
@@ -129,7 +127,6 @@
       cursor: pointer;
       z-index: 9999;
     }
-
     #chatWidget {
       position: fixed;
       bottom: 90px;
@@ -145,7 +142,6 @@
       z-index: 9999;
       font-family: Arial, sans-serif;
     }
-
     #chatHeader {
       background-color: #003366;
       color: white;
@@ -153,26 +149,22 @@
       text-align: center;
       font-weight: bold;
     }
-
     #chatMessages {
       flex: 1;
       padding: 10px;
       overflow-y: auto;
       font-size: 14px;
     }
-
     #chatInputArea {
       display: flex;
       border-top: 1px solid #ccc;
     }
-
     #chatInputArea input {
       flex: 1;
       padding: 10px;
       border: none;
       font-size: 14px;
     }
-
     #chatInputArea button {
       background-color: #003366;
       color: white;
@@ -180,9 +172,33 @@
       padding: 10px 15px;
       cursor: pointer;
     }
-
     .msg.user { text-align: right; color: #003366; margin: 5px 0; }
     .msg.bot { text-align: left; color: #333; margin: 5px 0; }
+    #shortcutBar {
+      position: fixed;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #003366;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 50px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      display: flex;
+      gap: 20px;
+      font-size: 14px;
+      z-index: 9998;
+    }
+    #shortcutBar button {
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    #shortcutBar button:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -275,7 +291,7 @@
 
 <footer>
   <p>&copy; 2025 The Luminarch Center | All Rights Reserved</p>
-  <p><a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a> | <a href="mailto:info@luminacenter.org">Contact Us</a></p>
+  <p><a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a> | <a href="mailto:info@luminarchcenter.org">Contact Us</a></p>
 </footer>
 
 <section id="terms" style="padding: 60px 20px; background-color: #fff; color: #333;">
@@ -285,9 +301,15 @@
   </p>
 </section>
 
-<!-- ✅ Luminarch Chatbot Script -->
-<button id="luminarchChatBtn" onclick="toggleChat()">💬 Chat with Luminarch AI</button>
+<!-- ✅ Floating Shortcut Bar -->
+<div id="shortcutBar">
+  <button onclick="scrollToSection('donate')">💛 Donate</button>
+  <button onclick="scrollToSection('volunteer')">🙏 Volunteer</button>
+  <button onclick="scrollToSection('contact')">📞 Contact</button>
+  <button onclick="toggleChat && toggleChat()">🧠 Chat</button>
+</div>
 
+<button id="luminarchChatBtn" onclick="toggleChat()">💬 Chat with Luminarch AI</button>
 <div id="chatWidget">
   <div id="chatHeader">Luminarch AI Assistant</div>
   <div id="chatMessages"></div>
@@ -298,6 +320,13 @@
 </div>
 
 <script>
+  function scrollToSection(id) {
+    const section = document.getElementById(id);
+    if (section) {
+      window.scrollTo({ top: section.offsetTop - 40, behavior: 'smooth' });
+    }
+  }
+
   const faqBot = {
     "what is the luminarch center": "The Luminarch Center is a nonprofit in Liberia and North Carolina focused on education, nourishment, digital access, and spiritual growth.",
     "who does the center serve": "We serve children, youth, and families in underserved communities.",
@@ -334,6 +363,23 @@
     chatBox.innerHTML += `<div class="msg bot"><strong>Luminarch AI:</strong> ${reply}</div>`;
     chatBox.scrollTop = chatBox.scrollHeight;
     input.value = "";
+  }
+</script>
+
+<!-- ✅ Floating Shortcut Bar -->
+<div id="shortcutBar">
+  <button onclick="scrollToSection('donate')">💛 Donate</button>
+  <button onclick="scrollToSection('volunteer')">🙏 Volunteer</button>
+  <button onclick="scrollToSection('contact')">📞 Contact</button>
+  <button onclick="toggleChat && toggleChat()">🧠 Chat</button>
+</div>
+
+<script>
+  function scrollToSection(id) {
+    const section = document.getElementById(id);
+    if (section) {
+      window.scrollTo({ top: section.offsetTop - 40, behavior: 'smooth' });
+    }
   }
 </script>
 
