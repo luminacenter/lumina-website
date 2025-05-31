@@ -40,11 +40,13 @@
 
     <!-- PayPal Button -->
     <img src="paypal-logo.png" alt="PayPal Logo" style="width:100px; margin-top:20px;">
-    <button class="payment-button" onclick="window.location.href='https://www.paypal.com/donate?hosted_button_id=EXAMPLE'">Donate via PayPal</button>
+    <button class="payment-button" onclick="redirectWithMessage('paypal')">Donate via PayPal</button>
+    <p id="paypal-msg" style="color: green;"></p>
 
     <!-- Venmo Button -->
     <img src="venmo-logo.png" alt="Venmo Logo" style="width:100px; margin-top:20px;">
-    <button class="payment-button" onclick="window.location.href='https://venmo.com/YourVenmoUsername'">Donate via Venmo</button>
+    <button class="payment-button" onclick="redirectWithMessage('venmo')">Donate via Venmo</button>
+    <p id="venmo-msg" style="color: green;"></p>
 
     <img src="zelle-logo.png" alt="Zelle Logo" style="width:100px; margin-top:20px;">
     <!-- Zelle Instructions -->
@@ -65,5 +67,17 @@
         <p>&copy; 2025 The Luminarch Center | All Rights Reserved</p>
     </footer>
 
+<script>
+  function redirectWithMessage(platform) {
+    const urls = {
+      paypal: 'https://www.paypal.com/donate?hosted_button_id=EXAMPLE',
+      venmo: 'https://venmo.com/YourVenmoUsername'
+    };
+    document.getElementById(`${platform}-msg`).textContent = 'Redirecting to ' + platform.charAt(0).toUpperCase() + platform.slice(1) + '...';
+    setTimeout(() => {
+      window.location.href = urls[platform];
+    }, 1200);
+  }
+</script>
 </body>
 </html>
