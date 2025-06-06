@@ -356,12 +356,11 @@
   <button onclick="scrollToSection('donate')">💛 Donate</button>
   <button onclick="scrollToSection('volunteer')">🙏 Volunteer</button>
   <button onclick="scrollToSection('contact')">📞 Contact</button>
-  <button onclick="toggleChat && toggleChat()">🧠 Chat</button>
+  
 </div>
 
-<button id="luminarchChatBtn" onclick="toggleChat()">💬 Chat with Luminarch AI</button>
-<div id="chatWidget">
-  <div id="chatHeader">Luminarch AI Assistant</div>
+
+
   <div id="chatMessages"></div>
   <div id="chatInputArea">
     <input type="text" id="chatInput" placeholder="Ask a question..." onkeydown="if(event.key==='Enter'){sendChat()}">
@@ -377,30 +376,11 @@
     }
   }
 
-  const faqBot = {
-    "what is the luminarch center": "The Luminarch Center is a nonprofit in Liberia and North Carolina focused on education, nourishment, digital access, and spiritual growth.",
-    "who does the center serve": "We serve children, youth, and families in underserved communities.",
-    "is the center religious": "Yes, we are rooted in Christian values but welcome all.",
-    "how is it funded": "We’re funded through donations, grants, and community partnerships.",
-    "is everything free": "Yes — meals, library, therapy, and learning access are free.",
-    "can i volunteer": "Yes! Visit our volunteer page or email info@luminarchcenter.org.",
-    "how do i donate": "You can give through our 'Donate' page — one-time or monthly support.",
-    "can i sponsor a child": "Yes — you can sponsor meals, tech, or supplies.",
-    "how do i get in touch": "Email info@luminarchcenter.org or use our contact form."
-  };
+  
 
-  function toggleChat() {
-    const chat = document.getElementById("chatWidget");
-    chat.style.display = chat.style.display === "flex" ? "none" : "flex";
-  }
+  
 
-  function sendChat() {
-    const input = document.getElementById("chatInput");
-    const msg = input.value.trim().toLowerCase();
-    if (!msg) return;
-
-    const chatBox = document.getElementById("chatMessages");
-    chatBox.innerHTML += `<div class="msg user"><strong>You:</strong> ${input.value}</div>`;
+  </div>`;
 
     let reply = "I'm sorry, I don't have an answer to that yet.";
     for (let key in faqBot) {
